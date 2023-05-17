@@ -7,9 +7,7 @@ import { FavoritesContext } from "../../store/favorite-context";
 export const MeetupItem = (props) => {
   const { id, title, description, image, address, deleteItem } = props;
   const favoritesCtx = useContext(FavoritesContext);
-  const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
-
-  
+  const itemIsFavorite = favoritesCtx.itemIsFavorite(id);
 
   const togglefavoriteStatusHandler = () => {
     if (itemIsFavorite) {
@@ -20,7 +18,7 @@ export const MeetupItem = (props) => {
         title: title,
         description: description,
         image: image,
-        adress:address,
+        adress: address,
       });
     }
   };
@@ -40,7 +38,7 @@ export const MeetupItem = (props) => {
           <button onClick={togglefavoriteStatusHandler}>
             {itemIsFavorite ? "Remove from Favorites" : "To favorites"}
           </button>
-          <button onClick={()=>deleteItem(id)}>Delete</button>
+          <button onClick={() => deleteItem(id)}>Delete</button>
         </div>
       </Card>
     </li>
