@@ -33,6 +33,12 @@ export const AllMeetupsPage = () => {
   useEffect(() => {
     getAllMeetups();
   }, []);
+   
+   
+   const deleteMeetup = (meetupId) => {
+      setloadedMeetups(loadedMeetups.filter(meetup => meetup.id !== meetupId))
+      console.log('delete')
+   }
 
   if (isLoading) {
     return (
@@ -45,7 +51,7 @@ export const AllMeetupsPage = () => {
   return (
     <section>
       <h1>All Meetups</h1>
-      <MeetupList meetups={loadedMeetups} />
+      <MeetupList meetups={loadedMeetups} deleteMeetup={deleteMeetup} />
     </section>
   );
 };
