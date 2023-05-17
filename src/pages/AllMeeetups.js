@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 
 import { MeetupList } from "../components/meetups/MeetupList";
 
-
 export const AllMeetupsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMeetups, setloadedMeetups] = useState([]);
 
-  useEffect(() => {
+  const getAllMeetups = () => {
     setIsLoading(true);
     fetch(
       "https://react-getting-started-5a3ff-default-rtdb.firebaseio.com/meetups.json"
@@ -29,6 +28,10 @@ export const AllMeetupsPage = () => {
         setIsLoading(false);
         setloadedMeetups(meetups);
       });
+  };
+
+  useEffect(() => {
+    getAllMeetups();
   }, []);
 
   if (isLoading) {
